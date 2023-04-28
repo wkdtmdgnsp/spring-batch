@@ -1,6 +1,13 @@
 spring:
   profiles:
     active: local
+  jpa:
+    hibernate:
+      ddl-auto: create
+    database-platform: org.hibernate.dialect.Oracle10gDialect
+    show-sql: true
+    properties:
+      hibernate.format_sql: true
 
 ---
 
