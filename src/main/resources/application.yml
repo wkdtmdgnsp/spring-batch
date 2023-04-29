@@ -3,12 +3,14 @@ spring:
     active: local
   jpa:
     hibernate:
-      ddl-auto: create
-    database-platform: org.hibernate.dialect.Oracle10gDialect
+      ddl-auto: update
+    database-platform: org.hibernate.dialect.Oracle12cDialect
     show-sql: true
     properties:
       hibernate.format_sql: true
-
+  batch:
+    job:
+      names: ${job.name:NONE}
 ---
 
 spring:
@@ -24,6 +26,4 @@ spring:
     password: 1234
   batch:
     jdbc:
-      initialize-schema: always
-    job:
-      enabled: false
+      initialize-schema: embedded

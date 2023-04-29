@@ -19,6 +19,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
 
 import javax.persistence.EntityManagerFactory;
 
@@ -50,9 +51,11 @@ public class FileJobConfiguration {
     @Bean
     @StepScope
     public FlatFileItemReader<ProductV0> fileItemReader(@Value("#{jobParameters['requestDate']}") String requestDate) {
+        Resource resource = new ClassPathResource("product_"+requestDate+".csv");
+        System.out.println("파일존재 : " + resource.exists());
         return new FlatFileItemReaderBuilder<ProductV0>()
                 .name("flatFile")
-                .resource(new ClassPathResource("product_" +requestDate + ".csv"))
+                .resource(resource)
                 .fieldSetMapper(new BeanWrapperFieldSetMapper<>())
                 .targetType(ProductV0.class)
                 .linesToSkip(1)
