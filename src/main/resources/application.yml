@@ -26,4 +26,4 @@ spring:
     password: 1234
   batch:
     jdbc:
-      initialize-schema: embedded
+      initialize-schema: always
