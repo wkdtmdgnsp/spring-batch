@@ -7,7 +7,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class ProductRowMapper implements RowMapper<ProductV0> {
-
     @Override
     public ProductV0 mapRow(ResultSet rs, int rowNum) throws SQLException {
         return ProductV0.builder()
