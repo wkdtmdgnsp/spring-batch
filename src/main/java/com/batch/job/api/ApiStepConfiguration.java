@@ -11,6 +11,9 @@ import com.batch.classifier.WriterClassifier;
 import com.batch.domain.ApiRequestV0;
 import com.batch.domain.ProductV0;
 import com.batch.partiition.ProductPartitioner;
+import com.service.ApiService1;
+import com.service.ApiService2;
+import com.service.ApiService3;
 import lombok.RequiredArgsConstructor;
 import org.springframework.batch.core.Step;
 import org.springframework.batch.core.configuration.annotation.StepBuilderFactory;
@@ -40,6 +43,9 @@ public class ApiStepConfiguration {
 
     private final StepBuilderFactory stepBuilderFactory;
     private final DataSource dataSource;
+    private final ApiService1 apiService1;
+    private final ApiService2 apiService2;
+    private final ApiService3 apiService3;
 
     private int chunkSize = 10;
 
@@ -80,6 +86,7 @@ public class ApiStepConfiguration {
         return productPartitioner;
     }
 
+    @Bean
     @StepScope
     public ItemReader<ProductV0> itemReader(@Value("#{stepExecutionContext['product']}") ProductV0 productV0) throws Exception {
 
@@ -126,9 +133,9 @@ public class ApiStepConfiguration {
         ClassifierCompositeItemWriter<ApiRequestV0> writer = new ClassifierCompositeItemWriter<>();
         WriterClassifier<ApiRequestV0, ItemWriter<? super ApiRequestV0>> classifier = new WriterClassifier();
         Map<String, ItemWriter<ApiRequestV0>> writerMap = new HashMap<>();
-        writerMap.put("1", new ApiItemWriter1());
-        writerMap.put("2", new ApiItemWriter2());
-        writerMap.put("3", new ApiItemWriter3());
+        writerMap.put("1", new ApiItemWriter1(apiService1));
+        writerMap.put("2", new ApiItemWriter2(apiService2));
+        writerMap.put("3", new ApiItemWriter3(apiService3));
 
         classifier.setWriterMap(writerMap);
 
