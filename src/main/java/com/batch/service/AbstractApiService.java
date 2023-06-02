@@ -1,4 +1,4 @@
-package com.service;
+package com.batch.service;
 
 import com.batch.domain.ApiInfo;
 import com.batch.domain.ApiRequestV0;
@@ -8,12 +8,14 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.client.ClientHttpResponse;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
+import org.springframework.stereotype.Service;
 import org.springframework.web.client.ResponseErrorHandler;
 import org.springframework.web.client.RestTemplate;
 
 import java.io.IOException;
 import java.util.List;
 
+@Service
 public abstract class AbstractApiService {
 
     public ApiResponseV0 service(List<? extends ApiRequestV0> apiRequest) {

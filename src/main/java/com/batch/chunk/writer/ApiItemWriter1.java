@@ -2,7 +2,7 @@ package com.batch.chunk.writer;
 
 import com.batch.domain.ApiRequestV0;
 import com.batch.domain.ApiResponseV0;
-import com.service.AbstractApiService;
+import com.batch.service.AbstractApiService;
 import org.springframework.batch.item.ItemWriter;
 
 import java.util.List;

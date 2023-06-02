@@ -1,4 +1,4 @@
-package com.service;
+package com.batch.service;
 
 import com.batch.domain.ApiInfo;
 import com.batch.domain.ApiResponseV0;
