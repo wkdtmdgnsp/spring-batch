@@ -14,7 +14,7 @@ spring:
   batch:
     job:
       names: ${job.name:NONE}
-      enabled: true
+      enabled: false
 ---
 
 spring:

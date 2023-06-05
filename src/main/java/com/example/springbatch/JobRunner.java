@@ -10,7 +10,7 @@
 //import org.springframework.stereotype.Component;
 //
 //@Component
-//public class JobRunner implements ApplicationRunner {
+//public class FileJobRunner implements ApplicationRunner {
 //
 //    @Autowired
 //    private JobLauncher jobLauncher;
