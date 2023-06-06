@@ -9,4 +9,5 @@ public class ApiRequestV0 {
 
     private Long id;
     private ProductV0 productV0;
+    private ApiResponseV0 apiResponseV0;
 }
